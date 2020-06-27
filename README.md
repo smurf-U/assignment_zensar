@@ -113,3 +113,9 @@ print(p.content)
 ```
 
 
+
+ **Exercise 3 of 1  in ex_1_3.py file**
+ 
+ **Exercise 2 in ex_2_1.py file**
+
+
