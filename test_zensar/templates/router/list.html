@@ -1,0 +1,49 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block custom_js %}
+
+<script src="{% static 'js/search.js'%}" type="text/javascript"></script>
+{% endblock %}
+
+{% block container %}
+<div class="custom_filter">
+    <h5>Search</h5>
+    <div>
+        <input id="search_by" type="radio" name="search_by" value="ip"/> Search By Ip</br>
+        <input id="search_by" checked type="radio" name="search_by" value="hostname"/> Search By Hostname</br>
+        {% csrf_token %}   
+        <div class="search_by_ip" style="display: None;">
+            <input id="f_ipv4" name="f_ipv4" placeholder="Search From Ipv4"/> b/w
+            <input name="t_ipv4" id="t_ipv4" placeholder="Search To Ipv4"/>
+        </div>
+        <div class="search_by_host">
+            <input name="hostname" id="hostname" placeholder="Search Hostname"/>
+        </div>
+        <button class="btn-search btn btn-primary" value="Search">Search</button>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">SAPID</th>
+                <th scope="col">Hostname</th>
+                <th scope="col">IPv4</th>
+                <th scope="col">Mac Address</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="table_data">
+            {% for router in routers %}
+            <tr>
+                <td>{{router.sapid}}</td>
+                <td>{{router.hostname}}</td>
+                <td>{{router.loopback}}</td>
+                <td>{{router.mac_address}}</td>
+                <td><a href="{% url 'routermanager_detail' router.id %}" class="btn btn-success">Details</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
+{% endblock %}

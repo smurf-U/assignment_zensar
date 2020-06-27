@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+{% block container %}
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Router Details #{{router.id}}</h5>
+        <a href="{% url 'routermanager_delete' router.id %}"  class="btn btn-danger float-right">Delete</a>
+        <a href="{% url 'routermanager_update' router.id %}"  class="btn btn-warning float-right">Update</a>
+    </div>
+    <div class="card-body">
+    <dl class="row">
+      <dt class="col-sm-3">Sapid</dt>
+      <dd class="col-sm-9">{{ router.sapid }}</dd>
+      <dt class="col-sm-3">Hostname</dt>
+      <dd class="col-sm-9">{{ router.hostname }}</dd>
+      <dt class="col-sm-3">IPv4</dt>
+      <dd class="col-sm-9">{{ router.loopback }}</dd>
+      <dt class="col-sm-3">Mac Address</dt>
+      <dd class="col-sm-9">{{ router.mac_address }}</dd>
+    </dl>
+
+    </div>
+</div>
+
+{% endblock %}
